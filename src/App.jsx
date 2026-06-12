@@ -193,16 +193,7 @@ const projects = [
     desc: 'Full-stack travel safety platform for tourists and trekking guides in Nepal. Users report real-time hazards - landslides, floods, road blocks - and an AI engine using TF-IDF + DBSCAN clusters reports, filters false alarms, and auto-broadcasts verified alerts.',
     tags: ['Django', 'React', 'scikit-learn', 'DBSCAN', 'TF-IDF', 'SQL Server', 'Docker', 'JWT'],
     image: '/images/NTA.jpg',
-    link: 'https://github.com/subashkatwal/global-mitra',
-  },
-  {
-    year: '202',
-    name: 'EventHub',
-    type: 'Event Management System',
-    desc: 'A full-stack event platform with smart calendar, ticketing, and a frictionless user registration flow.',
-    tags: ['React', 'Django', 'Python', 'PostgreSQL'],
-    image: '/images/event.jpg',
-    link: 'https://github.com/subashkatwal',
+    link: 'https://globalmitra-frontend.onrender.com/',
   },
   {
     year: '2025',
@@ -212,6 +203,15 @@ const projects = [
     tags: ['FastAPI', 'Uvicorn', 'LangChain', 'Groq', 'HTML', 'CSS', 'JavaScript', 'Render'],
     image: '/images/agentic-ai.jpeg',
     link: 'https://csit-ai-tutor.onrender.com/',
+  },
+  {
+    year: '202',
+    name: 'EventHub',
+    type: 'Event Management System',
+    desc: 'A full-stack event platform with smart calendar, ticketing, and a frictionless user registration flow.',
+    tags: ['React', 'Django', 'Python', 'PostgreSQL'],
+    image: '/images/event.jpg',
+    link: 'https://github.com/subashkatwal',
   },
 ]
 
