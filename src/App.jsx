@@ -206,12 +206,12 @@ const projects = [
   },
   {
     year: '2025',
-    name: 'Agentic AI',
-    type: 'Multi-Agent Decision Platform',
-    desc: 'Composable AI agents that collaborate on hiring workflows, research, and operational decisions.',
-    tags: ['Django', 'React', 'OpenAI'],
+    name: 'CSIT AI Tutor',
+    type: 'AI-Powered Study Assistant',
+    desc: 'A TU CSIT-focused AI tutor that identifies the subject and topic of any question, gives structured step-by-step explanations aligned with exam patterns, rates exam relevance, generates practice questions with answers, and streams real-time progress updates.',
+    tags: ['FastAPI', 'Uvicorn', 'LangChain', 'Groq', 'HTML', 'CSS', 'JavaScript', 'Render'],
     image: '/images/agentic-ai.jpeg',
-    link: 'https://github.com/subashkatwal',
+    link: 'https://csit-ai-tutor.onrender.com/',
   },
 ]
 
