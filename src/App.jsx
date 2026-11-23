@@ -265,6 +265,7 @@ const professionalProjects = [
     type: 'Candidate Information Platform · Geoneer Geospatial',
     desc: 'Platform for looking up candidate information. I worked on its backend APIs and data handling.',
     tags: ['Backend', 'REST APIs', 'Database'],
+    logo: '/images/yourcandidate-logo.png',
     live: 'https://yourcandidate.info',
   },
   {
@@ -306,7 +307,9 @@ function ProjectCard({ p }) {
       <div className="project-img">
         {p.image
           ? <img src={p.image} alt={p.name} className="project-thumb" />
-          : <div className="project-thumb project-mono" aria-hidden="true">{initials}</div>}
+          : p.logo
+            ? <div className="project-thumb project-mono"><img src={p.logo} alt={`${p.name} logo`} className="project-logo" /></div>
+            : <div className="project-thumb project-mono" aria-hidden="true">{initials}</div>}
       </div>
       <div className="project-info">
         <h3 className="project-name">{p.name}</h3>
