@@ -111,7 +111,7 @@ function Hero() {
             <img
               src="/images/profile-photo.jpg"
               alt="Subash Katwal"
-              style={{ borderRadius: '16px', width: '360px', height: '360px', maxWidth: '100%', objectFit: 'cover', objectPosition: 'center 30%', display: 'block' }}
+              className="hero-photo"
             />
           </div>
         </div>
