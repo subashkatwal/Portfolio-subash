@@ -6,23 +6,6 @@ import KeywordExtractor from './components/KeywordExtractor'
 import SentimentAnalyzer from './components/SentimentAnalyzer'
 import TextSimilarityChecker from './components/TextSimilarityChecker'
 import SpamClassifier from './components/SpamClassifier'
-const PlaceholderImg = ({ width, height, text, style }) => (
-  <div style={{
-    width: width || '100%',
-    height: height || '100%',
-    background: 'linear-gradient(135deg, #e5e7eb 0%, #d1d5db 100%)',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    color: '#9ca3af',
-    fontSize: '13px',
-    fontWeight: '500',
-    borderRadius: style?.borderRadius || '0',
-    ...style
-  }}>
-    {text || 'Photo'}
-  </div>
-)
 
 // Navbar
 function Navbar() {
@@ -47,7 +30,8 @@ function Navbar() {
         <div className={`nav-links${menuOpen ? ' open' : ''}`}>
           <button onClick={() => scrollTo('about')}>About</button>
           <button onClick={() => scrollTo('work')}>Work</button>
-          <button onClick={() => scrollTo('miniprojects')}>Demos</button>
+          <button onClick={() => scrollTo('experience')}>Experience</button>
+          <button onClick={() => scrollTo('education')}>Education</button>
           <button onClick={() => scrollTo('skills')}>Skills</button>
           <button onClick={() => scrollTo('contact')}>Contact</button>
         </div>
@@ -60,6 +44,13 @@ function Navbar() {
   )
 }
 
+// Counts only what is listed on this page
+const stats = [
+  { value: '4', label: 'Production sites' },
+  { value: '6', label: 'Live projects' },
+  { value: '1 yr', label: 'Backend experience' },
+]
+
 function Hero() {
   return (
     <section className="hero" id="hero">
@@ -70,30 +61,30 @@ function Hero() {
             Available for opportunities
           </div>
           <h1 className="hero-title">
-            Hi, I'm Subash - <span className="blue">AI &amp; ML Engineer</span> building intelligent systems.
+            Subash Katwal, <span className="blue">Backend &amp; AI Engineer</span>.
           </h1>
           <p className="hero-desc">
-            I design and ship deep-learning, NLP, and full-stack applications. Currently based in Kathmandu, Nepal - passionate about agentic AI and data-driven products.
+            I build backends with Python, Django and PostgreSQL, and AI apps with LangChain, LangGraph and LLM APIs. Previously at Geoneer Geospatial, I built the backends for Examneer and YourCandidate.
           </p>
           <div className="hero-actions">
             <button className="btn-primary" onClick={() => document.getElementById('work').scrollIntoView({ behavior: 'smooth' })}>
               View my work ↗
             </button>
-           <a 
-            href="https://drive.google.com/file/d/1n3pPCZkr3LvLDryQQi8bvsgvdhJn9Bi6/view?usp=drive_link" 
-            target="_blank" 
-            rel="noreferrer"
-            style={{ textDecoration: 'none' }}
-          >
-            <button className="btn-secondary">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-                <polyline points="7 10 12 15 17 10"/>
-                <line x1="12" y1="15" x2="12" y2="3"/>
-              </svg>
-              Download CV
-            </button>
-          </a>
+            <a
+              href="https://drive.google.com/file/d/1Yfsm0ZYa3obhjABq7Q3tgX3eqVzZEfUI/view?usp=sharing"
+              target="_blank"
+              rel="noreferrer"
+              style={{ textDecoration: 'none' }}
+            >
+              <button className="btn-secondary">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                  <polyline points="7 10 12 15 17 10"/>
+                  <line x1="12" y1="15" x2="12" y2="3"/>
+                </svg>
+                View Resume
+              </button>
+            </a>
           </div>
           <div className="social-links">
             <a href="https://github.com/subashkatwal" target="_blank" rel="noreferrer" aria-label="GitHub">
@@ -106,21 +97,24 @@ function Hero() {
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
             </a>
           </div>
+          <dl className="hero-stats">
+            {stats.map(s => (
+              <div key={s.label}>
+                <dt>{s.value}</dt>
+                <dd>{s.label}</dd>
+              </div>
+            ))}
+          </dl>
         </div>
         <div className="hero-right">
-        <div className="hero-photo-wrap">
-          <img
-            src="/images/profile-pic.jpeg"
-            alt="Profile"
-            style={{
-              borderRadius: '16px',
-              width: '280px',
-              height: '340px',
-              objectFit: 'cover'
-            }}
-          />
+          <div className="hero-photo-wrap">
+            <img
+              src="/images/profile-photo.jpg"
+              alt="Subash Katwal"
+              style={{ borderRadius: '16px', width: '360px', height: '360px', maxWidth: '100%', objectFit: 'cover', objectPosition: 'center 30%', display: 'block' }}
+            />
+          </div>
         </div>
-</div>
       </div>
     </section>
   )
@@ -135,125 +129,219 @@ function About() {
           <h2 className="section-title">A bit about me</h2>
         </div>
         <div className="section-content-col">
-          <p>I'm a Computer Science student at <strong>Tribhuvan University</strong> and a self-taught engineer obsessed with the place where software starts to reason.</p>
-          <p>I've shipped full-stack apps with React, Django, and SQL Server, and explored ML across travel assistants, book recommenders, word-prediction tools, and multi-agent AI platforms.</p>
-          <p>I read papers on weekends, write code most evenings, and share most of what I build on GitHub. Right now I'm deep into agentic systems and the engineering craft behind them.</p>
+          <p>I'm a final-year BSc CSIT student at <strong>Tribhuvan University</strong> I spent a year as a backend developer at <strong>Geoneer Geospatial</strong>, where I worked on and delivered production projects from internship to junior role.</p>
+          <p>Most of my work is on the server side: designing database schemas, writing REST APIs with Django REST Framework, and getting apps deployed with Docker. I've worked on production sites like Examneer and YourCandidate, and built client projects such as Kitchen Durbar.</p>
+          <p>I also build AI projects end to end: prompt chains, LLM integration, agent workflows and the APIs around them. CSIT AI Tutor answers exam questions with LangChain and Groq and streams the answer live, and NPL Adda uses LangGraph agents for its meme captions.</p>
         </div>
       </div>
     </section>
   )
 }
+
+// Line-and-dot timeline: hover highlights an entry, click opens its details
+function Timeline({ items }) {
+  const [open, setOpen] = useState(0)
+  return (
+    <ol className="timeline">
+      {items.map((item, i) => {
+        const isOpen = open === i
+        return (
+          <li key={item.title + item.org} className={`tl-item${isOpen ? ' open' : ''}`}>
+            <span className="tl-dot" aria-hidden="true"></span>
+            <button
+              type="button"
+              className="tl-head"
+              onClick={() => setOpen(isOpen ? -1 : i)}
+              aria-expanded={isOpen}
+            >
+              <span>
+                <span className="tl-title">{item.title}</span>
+                <span className="tl-org">{item.org}</span>
+              </span>
+              {item.period && <span className="edu-years">{item.period}</span>}
+            </button>
+            {item.details && (
+              <div className="tl-body">
+                {Array.isArray(item.details)
+                  ? <ul>{item.details.map(d => <li key={d}>{d}</li>)}</ul>
+                  : <p>{item.details}</p>}
+              </div>
+            )}
+          </li>
+        )
+      })}
+    </ol>
+  )
+}
+
+const experience = [
+  {
+    title: 'Junior Backend Developer',
+    org: 'Geoneer Geospatial Pvt. Ltd.',
+    period: 'Jan 2026 - Oct 2026',
+    details: [
+      'Built and maintained the backends of production apps, including Examneer.com and YourCandidate.info.',
+      'Wrote REST APIs and worked with the frontend team to integrate them.',
+      'Designed database schemas and handled migrations and data fixes.',
+      'Took client requirements and turned them into working features with the team.',
+    ],
+  },
+  {
+    title: 'Backend Development Intern',
+    org: 'Geoneer Geospatial Pvt. Ltd.',
+    period: 'Nov 2025 - Jan 2026',
+    details: [
+      'Three-month internship on the backend team.',
+      'Learned the team codebase and workflow with Django and REST APIs.',
+      'Worked on API endpoints, database models and bug fixes alongside senior developers.',
+    ],
+  },
+]
+
+function Experience() {
+  return (
+    <section className="experience section-light" id="experience">
+      <div className="section-inner two-col">
+        <div className="section-label-col">
+          <h2 className="section-title">Experience</h2>
+          <p className="section-subtitle">Click a role to see what I worked on.</p>
+        </div>
+        <Timeline items={experience} />
+      </div>
+    </section>
+  )
+}
+
+const education = [
+  {
+    title: 'B.Sc. Computer Science & IT (CSIT)',
+    org: 'Tribhuvan University',
+    period: '2079 - Present',
+    details: 'Currently in my final year.',
+  },
+  {
+    title: 'Higher Secondary (+2), Science - Biology',
+    org: 'VS Niketan School',
+  },
+  {
+    title: 'Secondary Education (Class 10)',
+    org: 'Sahara National School',
+  },
+]
 
 function Education() {
   return (
     <section className="education" id="education">
       <div className="section-inner two-col">
         <div className="section-label-col">
-          <h2 className="section-title">Academic background</h2>
+          <h2 className="section-title">Education</h2>
         </div>
-        <div className="edu-list">
-          <div className="edu-card">
-            <div className="edu-top">
-              <div>
-                <h3 className="edu-name">Tribhuvan University</h3>
-                <p className="edu-degree">B.Sc. Computer Science &amp; IT (CSIT)</p>
-                <p className="edu-loc">
-                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                  Kathmandu, Nepal
-                </p>
-              </div>
-              <span className="edu-years">2022 - Present</span>
-            </div>
-          </div>
-          <div className="edu-card">
-            <div className="edu-top">
-              <div>
-                <h3 className="edu-name">NEB</h3>
-                <p className="edu-degree">+2 Science · GPA 3.70 / 4.0</p>
-                <p className="edu-loc">
-                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                  Kathmandu, Nepal
-                </p>
-              </div>
-              <span className="edu-years">2020 - 2022</span>
-            </div>
-          </div>
-        </div>
+        <Timeline items={education} />
       </div>
     </section>
   )
 }
 
-
-const projects = [
+// Projects - every link checked (HTTP 200). Professional sites have no public repo.
+const professionalProjects = [
   {
-    year: '2025',
-    name: 'Global Mitra',
-    type: 'Travel Safety & Incident Alert Platform',
-    desc: 'Full-stack travel safety platform for tourists and trekking guides in Nepal. Users report real-time hazards - landslides, floods, road blocks - and an AI engine using TF-IDF + DBSCAN clusters reports, filters false alarms, and auto-broadcasts verified alerts.',
-    tags: ['Django', 'React', 'scikit-learn', 'DBSCAN', 'TF-IDF', 'SQL Server', 'Docker', 'JWT'],
-    image: '/images/NTA.jpg',
-    link: 'https://globalmitra-frontend.onrender.com/',
+    name: 'Examneer',
+    type: 'Exam Preparation Platform · Geoneer Geospatial',
+    desc: 'Online exam preparation platform. I worked on the backend: API endpoints, database models and keeping the production app running.',
+    tags: ['Backend', 'REST APIs', 'Database'],
+    image: '/images/project-examneer.jpg',
+    live: 'https://examneer.com',
   },
   {
-    year: '2025',
-    name: 'CSIT AI Tutor',
-    type: 'AI-Powered Study Assistant',
-    desc: 'A TU CSIT-focused AI tutor that identifies the subject and topic of any question, gives structured step-by-step explanations aligned with exam patterns, rates exam relevance, generates practice questions with answers, and streams real-time progress updates.',
-    tags: ['FastAPI', 'Uvicorn', 'LangChain', 'Groq', 'HTML', 'CSS', 'JavaScript', 'Render'],
-    image: '/images/agentic-ai.jpeg',
-    link: 'https://csit-ai-tutor.onrender.com/',
+    name: 'New Summit College',
+    type: 'College Website',
+    desc: 'Website for New Summit College. I handled the backend side of the site and its content.',
+    tags: ['Backend', 'Web'],
+    image: '/images/project-newsummit.jpg',
+    live: 'https://newsummit.edu.np',
   },
   {
-    year: '202',
-    name: 'EventHub',
-    type: 'Event Management System',
-    desc: 'A full-stack event platform with smart calendar, ticketing, and a frictionless user registration flow.',
-    tags: ['React', 'Django', 'Python', 'PostgreSQL'],
-    image: '/images/event.jpg',
-    link: 'https://github.com/subashkatwal',
+    name: 'YourCandidate',
+    type: 'Candidate Information Platform · Geoneer Geospatial',
+    desc: 'Platform for looking up candidate information. I worked on its backend APIs and data handling.',
+    tags: ['Backend', 'REST APIs', 'Database'],
+    live: 'https://yourcandidate.info',
+  },
+  {
+    name: 'Kitchen Durbar',
+    type: 'Client Project · Commercial Kitchen Store',
+    desc: 'Storefront for commercial kitchen equipment. JWT and Google sign-in, email OTP for signup and password reset, product search and filters, orders priced on the server, an admin dashboard and WhatsApp checkout.',
+    tags: ['Django REST Framework', 'React', 'TypeScript', 'PostgreSQL', 'Docker', 'Nginx'],
+    image: '/images/project-kitchen-durbar.jpg',
+    live: 'https://kitchen-durbar-frontend.onrender.com/',
+    repo: 'https://github.com/subashkatwal/kitchen-durbar',
   },
 ]
+
+const personalProjects = [
+  {
+    name: 'CSIT AI Tutor',
+    type: 'AI Study Assistant',
+    desc: 'Study helper for TU CSIT 7th semester. It detects the subject and topic of a question, streams a step-by-step answer, rates exam relevance and creates practice questions. Limited to 3 questions per day.',
+    tags: ['FastAPI', 'LangChain', 'Groq', 'Server-Sent Events', 'Render'],
+    image: '/images/agentic-ai.jpeg',
+    live: 'https://csit-ai-tutor.onrender.com/',
+    repo: 'https://github.com/subashkatwal/csit-ai-tutor',
+  },
+  {
+    name: 'NPL Adda',
+    type: 'Nepal Premier League Fan Platform',
+    desc: 'Fan site for the Nepal Premier League with team pages, 2026 fixtures, match predictions with a leaderboard, and a meme lab with AI captions. Google sign-in, images on Cloudinary.',
+    tags: ['Django REST Framework', 'LangGraph', 'PostgreSQL', 'Redis', 'React', 'Docker'],
+    image: '/images/project-npl-adda.jpg',
+    live: 'https://npl-adda.onrender.com/',
+    repo: 'https://github.com/subashkatwal/NPL-Adda',
+  },
+]
+
+function ProjectCard({ p }) {
+  const initials = p.name.split(' ').map(w => w[0]).join('').slice(0, 2)
+  return (
+    <div className="project-card">
+      <div className="project-img">
+        {p.image
+          ? <img src={p.image} alt={p.name} className="project-thumb" />
+          : <div className="project-thumb project-mono" aria-hidden="true">{initials}</div>}
+      </div>
+      <div className="project-info">
+        <h3 className="project-name">{p.name}</h3>
+        <p className="project-type">{p.type}</p>
+        <p className="project-desc">{p.desc}</p>
+        <div className="tags">
+          {p.tags.map(t => <span className="tag" key={t}>{t}</span>)}
+        </div>
+        <div className="project-links">
+          <a className="project-btn" href={p.live} target="_blank" rel="noreferrer">Live demo ↗</a>
+          {p.repo && <a className="project-btn ghost" href={p.repo} target="_blank" rel="noreferrer">GitHub ↗</a>}
+        </div>
+      </div>
+    </div>
+  )
+}
 
 function Work() {
   return (
     <section className="work" id="work">
       <div className="section-inner">
         <div className="work-header">
-          <div>
-            <h2 className="section-title">Featured projects</h2>
-          </div>
+          <h2 className="section-title">Professional work</h2>
           <a href="https://github.com/subashkatwal" target="_blank" rel="noreferrer" className="github-link">
             All projects on GitHub ↗
           </a>
         </div>
         <div className="projects-list">
-          {projects.map((p, i) => (
-            <a
-              className="project-card"
-              key={i}
-              href={p.link}
-              target="_blank"
-              rel="noreferrer"
-            >
-              <div className="project-img">
-                {p.image
-                  ? <img src={p.image} alt={p.name} style={{ width: '220px', height: '140px', borderRadius: '10px', objectFit: 'cover', display: 'block' }} />
-                  : <PlaceholderImg text={p.name} style={{ borderRadius: '10px', width: '220px', height: '140px' }} />
-                }
-              </div>
-              <div className="project-info">
-                <span className="project-year">{p.year}</span>
-                <h3 className="project-name">{p.name}</h3>
-                <p className="project-type">{p.type}</p>
-                <p className="project-desc">{p.desc}</p>
-                <div className="tags">
-                  {p.tags.map(t => <span className="tag" key={t}>{t}</span>)}
-                </div>
-              </div>
-              <span className="project-arrow" aria-label="View project">↗</span>
-            </a>
-          ))}
+          {professionalProjects.map(p => <ProjectCard key={p.name} p={p} />)}
+        </div>
+        <div className="work-header work-sub">
+          <h2 className="section-title">Personal projects</h2>
+        </div>
+        <div className="projects-list">
+          {personalProjects.map(p => <ProjectCard key={p.name} p={p} />)}
         </div>
       </div>
     </section>
@@ -262,22 +350,10 @@ function Work() {
 
 // Skills
 const skillGroups = [
-  {
-    title: 'Languages',
-    items: ['Python', 'C','JavaScript', 'TypeScript', 'SQL', 'R'],
-  },
-  {
-    title: 'AI / ML',
-    items: ['TensorFlow', 'PyTorch', 'Scikit-learn', 'NLP', 'Deep Learning'],
-  },
-  {
-    title: 'Frameworks',
-    items: ['Django', 'React', 'FastAPI', 'Node.js'],
-  },
-  {
-    title: 'Tools',
-    items: ['Git', 'Docker', 'SQL Server', 'Figma', 'Linux'],
-  },
+  { title: 'Backend', items: ['Python', 'Django', 'Django REST Framework', 'FastAPI', 'REST APIs', 'JWT'] },
+  { title: 'Databases', items: ['PostgreSQL', 'SQL Server', 'Redis', 'SQL'] },
+  { title: 'AI Engineering', items: ['LangChain', 'LangGraph', 'LLM APIs (Groq, Gemini)', 'AI Agents', 'Prompt Design', 'Scikit-learn', 'NLP'] },
+  { title: 'Tools', items: ['Git', 'Docker', 'Nginx', 'Render', 'React', 'Linux'] },
 ]
 
 function Skills() {
@@ -286,7 +362,7 @@ function Skills() {
       <div className="section-inner two-col">
         <div className="section-label-col">
           <h2 className="section-title">Skills &amp; tools</h2>
-          <p className="section-subtitle">The technologies I reach for when shipping real products.</p>
+          <p className="section-subtitle">What I use day to day.</p>
         </div>
         <div className="skills-grid">
           {skillGroups.map(g => (
@@ -320,7 +396,7 @@ function MiniProjects() {
           <div>
             <h2 className="section-title">Live NLP Demos</h2>
             <p className="section-subtitle" style={{ marginTop: '8px' }}>
-              Interactive NLP tools - try them right here, no install needed.
+              Small NLP tools that run in the browser.
             </p>
           </div>
         </div>
@@ -359,7 +435,7 @@ function ClassicalML() {
           <div>
             <h2 className="section-title">Classical ML Demos</h2>
             <p className="section-subtitle" style={{ marginTop: '8px' }}>
-              Rule-based and statistical ML techniques implemented from scratch.
+              Rule-based and statistical techniques written from scratch.
             </p>
           </div>
         </div>
@@ -387,11 +463,10 @@ function Contact() {
   return (
     <section className="contact" id="contact">
       <div className="contact-inner">
-        <p className="contact-label"></p>
         <h2 className="contact-title">
-          Have a project in mind? <span className="blue">Let's build it.</span>
+          Need a backend built? <span className="blue">Let's talk.</span>
         </h2>
-        <p className="contact-sub">Open to opportunities, collaborations, and interesting conversations about AI.</p>
+        <p className="contact-sub">Open to backend and AI engineering roles, API work and freelance projects.</p>
         <a href="mailto:subashkatwal112@gmail.com" className="email-pill">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
           subashkatwal112@gmail.com
@@ -405,21 +480,16 @@ function Contact() {
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
             Kathmandu, Nepal
           </span>
-          <a 
-  href="https://github.com/subashkatwal" 
-  target="_blank" 
-  rel="noreferrer"
-  className="github-link"
->
-  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
-  </svg>
-  github.com/subashkatwal
-</a>
+          <a href="https://github.com/subashkatwal" target="_blank" rel="noreferrer" className="github-link">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+            </svg>
+            github.com/subashkatwal
+          </a>
         </div>
       </div>
       <div className="site-footer">
-        © 2026 Subash Katwal. Compiled in Kathmandu. Trained on caffeine, fine-tuned on logic.
+        © 2026 Subash Katwal. Built in Kathmandu.
       </div>
     </section>
   )
@@ -431,8 +501,9 @@ export default function App() {
       <Navbar />
       <Hero />
       <About />
-      <Education />
       <Work />
+      <Experience />
+      <Education />
       <Skills />
       <MiniProjects />
       <ClassicalML />
