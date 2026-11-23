@@ -932,3 +932,7 @@
 
 .project-logo { width: 72px; height: 72px; object-fit: contain; }
 
+
+.work .github-link:hover { color: #111; }
+.contact .github-link:hover { color: #fff; }
+
